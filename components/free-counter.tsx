@@ -10,10 +10,12 @@ import { Button } from "@/components/ui/button";
 import { useProModal } from "@/hooks/use-pro-modal";
 
 interface FreeCounterProps {
+    isPro: boolean;
     apiLimitCount: number;
 };
 
 export const FreeCounter = ({
+    isPro = false,
     apiLimitCount = 0
 }: FreeCounterProps) => {
     const [mounted, setMounted] = useState(false);
@@ -24,6 +26,10 @@ export const FreeCounter = ({
     }, []);
 
     if (!mounted) {
+        return null;
+    }
+
+    if (isPro) {
         return null;
     }
 

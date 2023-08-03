@@ -8,12 +8,14 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import Sidebar from "@/components/sidebar";
 
 interface MobileSidebarProps {
+    isPro: boolean;
     apiLimitCount: number;
 }
 
 const MobileSidebar = (
     {
-        apiLimitCount
+        isPro = false,
+        apiLimitCount = 0
     }: MobileSidebarProps
 ) => {
     // Remove Hydretion Errors
@@ -34,7 +36,7 @@ const MobileSidebar = (
                 </Button>
             </SheetTrigger>
             <SheetContent side="left" className="p-0">
-                <Sidebar apiLimitCount={apiLimitCount} />
+                <Sidebar isPro={isPro} apiLimitCount={apiLimitCount} />
             </SheetContent>
         </Sheet>
     );
