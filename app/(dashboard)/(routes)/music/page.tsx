@@ -6,7 +6,7 @@ import { Music } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { ChatCompletionRequestMessage } from "openai";
+import { toast } from "react-hot-toast";
 
 import { Button } from "@/components/ui/button";
 import { Heading } from "@/components/heading";
@@ -49,6 +49,8 @@ const MusicPage = () => {
         } catch (error: any) {
             if (error?.response?.status === 403) {
                 proModal.onOpen();
+            } else {
+                toast.error("Something went wrong.");
             }
         } finally {
             router.refresh();
